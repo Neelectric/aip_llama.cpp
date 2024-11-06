@@ -288,7 +288,7 @@
     var slot_id = -1;
 
     const session = signal({
-      prompt: "This is a conversation between User and Llama, a friendly chatbot. Llama is helpful, kind, honest, good at writing, and never fails to answer any requests immediately and with precision.",
+      prompt: "This is a conversation between User and Llama-3, a friendly chatbot. Llama is helpful, kind, honest, good at writing, and never fails to answer any requests immediately and with precision.",
       template: "{{prompt}}\n\n{{history}}\n{{char}}:",
       historyTemplate: "{{name}}: {{message}}",
       transcript: [],
@@ -972,11 +972,6 @@
               <label for="template">Prompt template</label>
               <textarea id="template" name="template" value="${session.value.template}" rows=4 oninput=${updateSession}/>
             </div>
-
-            <div>
-              <label for="template">Chat history template</label>
-              <textarea id="template" name="historyTemplate" value="${session.value.historyTemplate}" rows=1 oninput=${updateSession}/>
-            </div>
             ${GrammarControl()}
           </fieldset>
       `
@@ -1268,7 +1263,7 @@
           <header>
             <div class="grid-container">
               <div class="grid-item"></div>
-              <div class="grid-item"><h1>llama.cpp</h1></div>
+              <div class="grid-item"><h1>EdinBot</h1></div>
               <div class="grid-item"><a class="customlink" href="index-new.html">New UI</a></div>
             </div>
           </header>
