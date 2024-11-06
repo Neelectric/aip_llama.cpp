@@ -489,6 +489,7 @@
     }
 
     async function runLlama(prompt, llamaParams, char) {
+      console.log('we are in runLlama');
       const currentMessages = [];
       const history = session.value.transcript;
       if (controller.value) {
@@ -527,6 +528,7 @@
 
     // send message to server
     const chat = async (msg) => {
+      console.log('we are in chat');
       if (controller.value) {
         console.log('already running...');
         return;
@@ -560,6 +562,7 @@
     }
 
     const runCompletion = () => {
+      console.log('we are in runCompletion');
       if (controller.value) {
         console.log('already running...');
         return;
@@ -688,11 +691,11 @@
             <div>
               <div>
                 <button type="submit" disabled=${generating.value || talkActive.value}>Send</button>
-                <button disabled=${generating.value || talkActive.value} onclick=${uploadImage}>Upload Image</button>
+                <button disabled=${generating.value || talkActive.value} onclick=${uploadImage} style="display: none;">Upload Image</button>
                 <button onclick=${stop} disabled=${!generating.value}>Stop</button>
                 <button onclick=${reset}>Reset</button>
               </div>
-              <div>
+              <div style="display: none;">
                 <a href="#" style="cursor: help;" title="Help" onclick=${e => {
                   e.preventDefault();
                   alert(`STT supported by your browser: ${SpeechRecognition ? 'Yes' : 'No'}\n` +
@@ -705,7 +708,7 @@
                   <label for="send-on-talk" style="line-height: initial;">Send after talking</label>
                 </div>
               </div>
-              <div>
+              <div style="display: none;">
                 <a href="#" style="cursor: help;" title="Help" onclick=${e => {
                   e.preventDefault();
                   alert(`TTS supported by your browser: ${tts ? 'Yes' : 'No'}\n(TTS and speech recognition are not provided by llama.cpp)`);
@@ -931,7 +934,7 @@
 
       const GrammarControl = () => (
         html`
-          <div>
+          <div style="display: none;">
             <label for="template">Grammar</label>
             <textarea id="grammar" name="grammar" placeholder="Use gbnf or JSON Schema+convert" value="${params.value.grammar}" rows=4 oninput=${updateParams}/>
             <input type="text" name="prop-order" placeholder="order: prop1,prop2,prop3" oninput=${updateGrammarJsonSchemaPropOrder} />
@@ -985,7 +988,7 @@
       );
 
       return html`
-        <form>
+        <form style="display: none;">
           <fieldset class="two">
             <${UserTemplateResetButton}/>
             <div>
